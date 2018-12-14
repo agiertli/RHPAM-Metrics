@@ -1,5 +1,7 @@
 This Microservices will provide you with metrics from your RHPAM (kie-server) instance.
-Currently it's compatible with RHPAM 7.1.1
+Currently it's compatible with RHPAM 7.1.1.
+
+It utilizes microprofile-jaxrs, microprofile-metrics and microprofile-config parts of the Eclipse Microprofile Spec
 
 List of metrics:
 
