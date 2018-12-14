@@ -15,6 +15,11 @@ This microservice reacts to following configuration properties:
 | kie.server.username | Content Cell  | anton |   
 | kie.server.password | Content Cell  | password1!|
 
+These properties can be passed as:
+ - System property
+ - Environment variable
+ - src/main/resources/META-INF/microprofile-config.properties
+
 Example usage:
 
 Provided you have a running kie-server instance, you can make use of this microservice as follows:
