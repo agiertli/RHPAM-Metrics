@@ -13,9 +13,9 @@ This microservice reacts to following configuration properties:
 
 | Property name  | Description  | Default Value
 | ------------- | ------------- | ------------- |
-| kie.server.url | Content Cell  |http://localhost:8280/kie-server/services/rest/server |
-| kie.server.username | Content Cell  | anton |   
-| kie.server.password | Content Cell  | password1!|
+| kie.server.url | self-explanatory  |http://localhost:8280/kie-server/services/rest/server |
+| kie.server.username | self-explanatory | anton |   
+| kie.server.password | self-explanatory | password1!|
 
 These properties can be passed as:
  - System property
