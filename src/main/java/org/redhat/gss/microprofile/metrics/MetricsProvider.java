@@ -71,7 +71,7 @@ public class MetricsProvider {
 			return activeCount;
 		} else {
 			logger.error("Kie Server Client initialization failed");
-			return 0L;
+			return -1L;
 		}
 	}
 
