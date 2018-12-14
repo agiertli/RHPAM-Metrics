@@ -30,7 +30,7 @@ Provided you have a running kie-server instance, you can make use of this micros
 $ mvn clean package
 $ java -Dswarm.port.offset=100 -Dkie.server.url=http://HOST:PORT/kie-server/services/rest/server -Dkie.server.username=someUser -Dkie.server.password=somePassword! -jar target/rhpam-metrics-thorntail.jar
 $ curl -X GET http://localhost:8180/appMetrics/init  -H 'Accept: application/json' 
-curl -X GET  http://localhost:8180/metrics/application  -H 'Accept: application/json' 
+$ curl -X GET  http://localhost:8180/metrics/application  -H 'Accept: application/json' 
 ```
 
 Sample output:
