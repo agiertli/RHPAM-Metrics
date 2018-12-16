@@ -53,6 +53,12 @@
 			<artifactId>cdi</artifactId>
 		</dependency>
 		
+		<dependency>
+			<groupId>io.thorntail</groupId>
+			<artifactId>ejb</artifactId>
+		</dependency>
+		
+		
 		
 		<dependency>
 			<groupId>io.thorntail</groupId>

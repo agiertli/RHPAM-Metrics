@@ -1,12 +1,11 @@
 package org.redhat.gss.microprofile.metrics;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
+import javax.ejb.Singleton;
+import javax.ejb.Startup;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -29,8 +28,9 @@ import org.kie.server.client.QueryServicesClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@ApplicationScoped
 @Path("/appMetrics")
+@Singleton
+@Startup
 public class MetricsProvider {
 
 	private static final String SQL_EXPRESSION = "select * from ProcessInstanceInfo";
@@ -76,14 +76,31 @@ public class MetricsProvider {
 	}
 
 	@GET
-	@Path("/init")
+	@Path("/reconnect")
 	@javax.ws.rs.Produces(MediaType.APPLICATION_JSON)
 	public Response initMetric() {
+		connect();
 
+		if (client != null) {
+			return Response.ok().entity("{\"appMetricsInitialized\":\"true\"}").build();
+		} else
+			return Response.serverError().entity("{\"appMetricsInitialized\":" + "\"" + error.getMessage() + "\"" + "}")
+					.build();
+	}
+
+	@PostConstruct
+	public void initBean() {
+
+		connect();
+	}
+
+	public void connect() {
 		logger.debug("connecting to kie-server");
 		logger.debug("url:" + kieServerUrl);
 		logger.debug("username:" + kieServerUsername);
 		logger.debug("pw:" + kieServerPassword);
+
+		client = null;
 
 		try {
 			KieServicesConfiguration config = KieServicesFactory.newRestConfiguration(kieServerUrl, kieServerUsername,
@@ -112,19 +129,6 @@ public class MetricsProvider {
 			client = null;
 			queryClient = null;
 		}
-
-		if (client != null) {
-			return Response.ok().entity("{\"appMetricsInitialized\":\"true\"}").build();
-		} else
-			return Response.serverError().entity("{\"appMetricsInitialized\":" + "\"" + error.getMessage() + "\"" + "}")
-					.build();
-	}
-
-	@PostConstruct
-	public void initBean() {
-
-		// not going to need this after all
-
 	}
 
 }

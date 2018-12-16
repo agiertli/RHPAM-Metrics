@@ -22,7 +22,6 @@ Provided you have a running kie-server instance, you can make use of this micros
 ```bash
 $ mvn clean package
 $ java -Dswarm.port.offset=100 -Dkie.server.url=http://HOST:PORT/kie-server/services/rest/server -Dkie.server.username=someUser -Dkie.server.password=somePassword! -jar target/rhpam-metrics-thorntail.jar
-$ curl -X GET http://localhost:8180/appMetrics/init  -H 'Accept: application/json' 
 curl -X GET  http://localhost:8180/metrics/application  -H 'Accept: application/json' 
 ```
 
@@ -31,4 +30,10 @@ Sample output:
 {
     "totalActiveProcessInstancesCount": 6
 }
+```
+
+If your kie-server has not been online at the time of deploying this microservice, you can reconnect at any time by executing:
+
+```bash
+$ curl -X GET http://localhost:8180/appMetrics/reconnect  -H 'Accept: application/json' 
 ```
