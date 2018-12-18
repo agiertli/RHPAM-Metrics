@@ -46,15 +46,15 @@ public class MetricsProvider {
 	private QueryServicesClient queryClient;
 
 	@Inject
-	@ConfigProperty(name = "kie.server.url", defaultValue = "http://localhost:8280/kie-server/services/rest/server")
+	@ConfigProperty(name = "KIE_SERVER_URL", defaultValue = "http://localhost:8280/kie-server/services/rest/server")
 	private String kieServerUrl;
 
 	@Inject
-	@ConfigProperty(name = "kie.server.username", defaultValue = "anton")
+	@ConfigProperty(name = "KIE_SERVER_USERNAME", defaultValue = "anton")
 	private String kieServerUsername;
 
 	@Inject
-	@ConfigProperty(name = "kie.server.password", defaultValue = "password1!")
+	@ConfigProperty(name = "KIE_SERVER_PASSWORD", defaultValue = "password1!")
 	private String kieServerPassword;
 
 	@Produces
