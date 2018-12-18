@@ -2,7 +2,7 @@
 .metadata
 bin/
 tmp/
-target-
+target/
 *.tmp
 *.bak
 *.swp
